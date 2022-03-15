@@ -1,0 +1,14 @@
+{
+    "name": "Games.GrumpyBear.LevelManagement",
+    "rootNamespace": "Games.GrumpyBear.LevelManagement",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

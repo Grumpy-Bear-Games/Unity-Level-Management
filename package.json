@@ -1,0 +1,24 @@
+{
+  "name": "games.grumpybear.levelmanagement",
+  "version": "0.0.1",
+  "displayName": "Level Management",
+  "description": "",
+  "unity": "2021.1",
+  "unityRelease": "24f1",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "hideInEditor": false,
+  "repository": {
+    "url": "https://github.com/Grumpy-Bear-Games/Unity-LevelManagement.git",
+    "type": "git"
+  },
+  "samples": [
+  ],
+  "keywords": [],
+  "author": {
+    "name": "Martin Parm",
+    "email": "parmus@gmail.com"
+  }
+}
