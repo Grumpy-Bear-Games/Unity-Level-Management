@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace Games.GrumpyBear.LevelManagement
 {
-    public class ColdStartInitializer: MonoBehaviour
+    public class LocationColdStartInitializer: MonoBehaviour
     {
+        private const string DEFAULT_NAME = "[Location Coldstart Initializer]";
+        
         [SerializeField] private LocationManager _locationManager;
         [SerializeField] private Location _location;
 
@@ -21,16 +23,15 @@ namespace Games.GrumpyBear.LevelManagement
         private void Reset()
         {
             var go = gameObject;
-            go.name = GetType().Name;
+            go.name = DEFAULT_NAME;
             go.tag = "EditorOnly";
         }
         
-        [UnityEditor.MenuItem("GameObject/ColdStartInitializer", false, 10)]
-        private static void CreateShuttleConfigurationInjector(UnityEditor.MenuCommand menuCommand)
+        [UnityEditor.MenuItem("GameObject/Grumpy Bear Games/Level Management/Location ColdStart Initializer", false, 10)]
+        private static void CreateLocationColdStartInitializer(UnityEditor.MenuCommand menuCommand)
         {
-            var go = new GameObject();
+            var go = new GameObject(DEFAULT_NAME, typeof(LocationColdStartInitializer));
             UnityEditor.GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
-            go.AddComponent<ColdStartInitializer>();
             UnityEditor.Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
             UnityEditor.Selection.activeObject = go;
         }
