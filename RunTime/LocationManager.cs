@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace Games.GrumpyBear.LevelManagement
     [CreateAssetMenu(menuName = "Grumpy Bear Games/Level Management/Location Manager")]
     public class LocationManager: ScriptableObject
     {
+        public static event Action<Location> OnLocationChanged;  
+            
         [SerializeField] private List<SceneReference> _globalScenes = new List<SceneReference>();
 
         public IReadOnlyList<SceneReference> GlobalScenes => _globalScenes;
@@ -18,6 +21,7 @@ namespace Games.GrumpyBear.LevelManagement
         {
             var sceneReferencesToLoad = location.Scenes.Concat(_globalScenes).Select(scene => scene.ScenePath);
             yield return SceneLoader.LoadExactlyByScenePath(sceneReferencesToLoad, location.ActiveScene.ScenePath);
+            OnLocationChanged?.Invoke(location);
         }
     }
 }
