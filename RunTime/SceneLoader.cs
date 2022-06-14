@@ -16,8 +16,8 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator LoadExactlyByBuildIndex(IEnumerable<int> buildIndices, int activeBuildIndex)
         {
             var buildIndicesSet = new HashSet<int>(buildIndices);
-            var scenesToUnload = Enumerable.Range(0, SceneManager.sceneCount)
-                .Select(SceneManager.GetSceneAt)
+            var scenesToUnload = Enumerable.Range(0, UnityEngine.SceneManagement.SceneManager.sceneCount)
+                .Select(UnityEngine.SceneManagement.SceneManager.GetSceneAt)
                 .Where(scene => scene.isLoaded && !buildIndicesSet.Contains(scene.buildIndex))
                 .ToList();
             yield return LoadScenesByBuildIndex(buildIndicesSet, activeBuildIndex);
@@ -30,8 +30,8 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator LoadExactlyByScenePath(IEnumerable<string> scenePaths, string activeScenePath)
         {
             var scenePathsSet = new HashSet<string>(scenePaths);
-            var scenesToUnload = Enumerable.Range(0, SceneManager.sceneCount)
-                .Select(SceneManager.GetSceneAt)
+            var scenesToUnload = Enumerable.Range(0, UnityEngine.SceneManagement.SceneManager.sceneCount)
+                .Select(UnityEngine.SceneManagement.SceneManager.GetSceneAt)
                 .Where(scene => scene.isLoaded && !scenePathsSet.Contains(scene.path))
                 .ToList();
             yield return LoadScenesByPath(scenePathsSet, activeScenePath);
@@ -44,7 +44,7 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator LoadScenesByPath(IEnumerable<string> scenePaths, string activeScenePath)
         {
             yield return LoadScenesByPath(scenePaths);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(activeScenePath));
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByPath(activeScenePath));
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator LoadScenesByBuildIndex(IEnumerable<int> buildIndices, int activeBuildIndex)
         {
             yield return LoadScenesByBuildIndex(buildIndices);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(activeBuildIndex));
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(activeBuildIndex));
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator LoadScenesByBuildIndex(IEnumerable<int> buildIndices)
         {
             var ops = buildIndices
-                .Where(buildIndex => !SceneManager.GetSceneByBuildIndex(buildIndex).isLoaded)
-                .Select(buildIndex => SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive));
+                .Where(buildIndex => !UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(buildIndex).isLoaded)
+                .Select(buildIndex => UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Additive));
             foreach (var op in ops)
             {
                 while (!op.isDone) yield return null;
@@ -82,7 +82,7 @@ namespace Games.GrumpyBear.LevelManagement
         public static IEnumerator UnloadScenes(IEnumerable<Scene> scenes)
         {
             var ops = scenes
-                .Select(scene => SceneManager.UnloadSceneAsync(scene.buildIndex));
+                .Select(scene => UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(scene.buildIndex));
             
             foreach (var op in ops)
             {

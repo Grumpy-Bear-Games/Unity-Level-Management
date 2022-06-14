@@ -7,19 +7,18 @@ namespace Games.GrumpyBear.LevelManagement
     {
         private const string DEFAULT_NAME = "[Location Coldstart Initializer]";
         
-        [SerializeField] private LocationManager _locationManager;
-        [SerializeField] private Location _location;
+        [SerializeField] private SceneGroup _sceneGroup;
 
         private static bool _initialized;
 
         private IEnumerator Start()
         {
             if (_initialized) yield break;
-            yield return _locationManager.Load_CO(_location);
+            yield return _sceneGroup.Load_CO();
             _initialized = true;
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         private void Reset()
         {
             var go = gameObject;

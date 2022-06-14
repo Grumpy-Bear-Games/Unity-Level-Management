@@ -12,6 +12,6 @@ namespace Games.GrumpyBear.LevelManagement
 
         public string ScenePath => _scenePath;
         public int BuildIndex => SceneUtility.GetBuildIndexByScenePath(_scenePath);
-        public Scene Scene => SceneManager.GetSceneByBuildIndex(BuildIndex);
+        public Scene Scene => UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(BuildIndex);
     }
 }
