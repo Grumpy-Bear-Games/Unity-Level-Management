@@ -4,8 +4,8 @@ using UnityEngine;
 namespace Games.GrumpyBear.LevelManagement.Editor
 {
     
-    [CustomEditor(typeof(LocationColdStartInitializer))]
-    public class LocationColdStartInitializerEditor: UnityEditor.Editor
+    [CustomEditor(typeof(SceneGroupColdStartInitializer))]
+    public class SceneGroupColdStartInitializerEditor: UnityEditor.Editor
     {
         private SerializedProperty _locationProperty;
 
@@ -21,11 +21,11 @@ namespace Games.GrumpyBear.LevelManagement.Editor
             
             var sceneGroup = _locationProperty.objectReferenceValue as SceneGroup;
             
-            if (sceneGroup == null) EditorGUILayout.HelpBox("Location missing", MessageType.Warning);
+            if (sceneGroup == null) EditorGUILayout.HelpBox("Scene Group missing", MessageType.Warning);
             
             var canLoad = (sceneGroup != null) && (sceneGroup.Scenes.Count > 0);  
             GUI.enabled = canLoad;
-            if (GUILayout.Button("Load location")) sceneGroup.LoadInEditor();
+            if (GUILayout.Button("Load Scene Group")) sceneGroup.LoadInEditor();
             GUI.enabled = true;
         }
     }

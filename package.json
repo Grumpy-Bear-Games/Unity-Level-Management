@@ -1,10 +1,10 @@
 {
   "name": "games.grumpybear.levelmanagement",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "displayName": "Level Management",
   "description": "",
-  "unity": "2021.1",
-  "unityRelease": "24f1",
+  "unity": "2021.3",
+  "unityRelease": "6f1",
   "license": "Apache-2.0",
   "dependencies": {
     "com.unity.textmeshpro": "3.0.6"

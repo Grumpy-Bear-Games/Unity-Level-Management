@@ -9,7 +9,7 @@ namespace Games.GrumpyBear.LevelManagement
     [CreateAssetMenu(menuName = "Grumpy Bear Games/Level Management/Scene Manager")]
     public class SceneManager: ScriptableObject
     {
-        public static event Action<SceneGroup> OnLocationChanged;  
+        public static event Action<SceneGroup> OnSceneGroupChanged;  
             
         [SerializeField] private List<SceneReference> _globalScenes = new();
         [SerializeField] private List<SceneGroup> _sceneGroups = new();
@@ -22,7 +22,7 @@ namespace Games.GrumpyBear.LevelManagement
         {
             var sceneReferencesToLoad = sceneGroup.Scenes.Concat(_globalScenes).Select(scene => scene.ScenePath);
             yield return SceneLoader.LoadExactlyByScenePath(sceneReferencesToLoad, sceneGroup.ActiveScene.ScenePath);
-            OnLocationChanged?.Invoke(sceneGroup);
+            OnSceneGroupChanged?.Invoke(sceneGroup);
         }
         
         #if UNITY_EDITOR

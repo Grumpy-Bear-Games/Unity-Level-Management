@@ -10,7 +10,7 @@ namespace Games.GrumpyBear.LevelManagement
             {
                 if (_instance != null) return _instance;
                 
-                var go = new GameObject("[LocationManager Helper]", typeof(SceneManagerHelper))
+                var go = new GameObject("[SceneManager Helper]", typeof(SceneManagerHelper))
                 {
                     hideFlags = HideFlags.DontSave | HideFlags.NotEditable | HideFlags.HideAndDontSave | HideFlags.HideInHierarchy
                 };

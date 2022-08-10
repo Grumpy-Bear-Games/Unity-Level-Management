@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Games.GrumpyBear.LevelManagement
 {
-    public class LocationColdStartInitializer: MonoBehaviour
+    public class SceneGroupColdStartInitializer: MonoBehaviour
     {
-        private const string DEFAULT_NAME = "[Location Coldstart Initializer]";
+        private const string DEFAULT_NAME = "[Scene Group Coldstart Initializer]";
         
         [SerializeField] private SceneGroup _sceneGroup;
 
@@ -26,10 +26,10 @@ namespace Games.GrumpyBear.LevelManagement
             go.tag = "EditorOnly";
         }
         
-        [UnityEditor.MenuItem("GameObject/Grumpy Bear Games/Level Management/Location ColdStart Initializer", false, 10)]
-        private static void CreateLocationColdStartInitializer(UnityEditor.MenuCommand menuCommand)
+        [UnityEditor.MenuItem("GameObject/Grumpy Bear Games/Level Management/Scene Group ColdStart Initializer", false, 10)]
+        private static void CreateSceneGroupColdStartInitializer(UnityEditor.MenuCommand menuCommand)
         {
-            var go = new GameObject(DEFAULT_NAME, typeof(LocationColdStartInitializer));
+            var go = new GameObject(DEFAULT_NAME, typeof(SceneGroupColdStartInitializer));
             UnityEditor.GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
             UnityEditor.Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
             UnityEditor.Selection.activeObject = go;
