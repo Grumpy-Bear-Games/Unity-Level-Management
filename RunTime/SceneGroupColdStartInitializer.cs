@@ -8,6 +8,7 @@ namespace Games.GrumpyBear.LevelManagement
         private const string DEFAULT_NAME = "[Scene Group Coldstart Initializer]";
         
         [SerializeField] private SceneGroup _sceneGroup;
+        public SceneGroup SceneGroup => _sceneGroup;
 
         private static bool _initialized;
 
